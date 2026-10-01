@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Militer Athera Roleplay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <header class="navbar">
+    <a href="#home" class="brand">
+      <img src="logo.png" alt="Logo Militer Athera">
+      <span>MILITER <b>ATHERA</b></span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Buka menu">☰</button>
+
+    <nav id="navMenu">
+      <a href="#home" class="active">Home</a>
+      <a href="#rules">Rules</a>
+      <a href="#cuty">Cuty</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="badge">ATHERA MILITARY ROLEPLAY</div>
+        <h1>MILITER <span>ATHERA</span><br>ROLEPLAY</h1>
+        <p>
+          Selamat datang di pusat informasi Militer Athera Roleplay.
+          Bangun kedisiplinan, kerja sama, dan pengalaman roleplay militer
+          yang seru bersama komunitas Athera.
+        </p>
+        <div class="hero-buttons">
+          <a href="#rules" class="btn primary">LIHAT RULES</a>
+          <a href="#cuty" class="btn secondary">INFO CUTY</a>
+        </div>
+      </div>
+
+      <div class="hero-logo">
+        <div class="logo-ring">
+          <img src="logo.png" alt="Logo Athera">
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" class="section">
+      <div class="section-title">
+        <span>01</span>
+        <div>
+          <p>PERATURAN</p>
+          <h2>RULES</h2>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="number">01</div>
+          <h3>DISIPLIN</h3>
+          <p>Hormati seluruh anggota dan ikuti arahan atasan selama kegiatan roleplay.</p>
+        </article>
+        <article class="card">
+          <div class="number">02</div>
+          <h3>NO TOXIC</h3>
+          <p>Dilarang melakukan penghinaan, provokasi, atau tindakan yang mengganggu komunitas.</p>
+        </article>
+        <article class="card">
+          <div class="number">03</div>
+          <h3>ROLEPLAY</h3>
+          <p>Jaga suasana roleplay dan hindari tindakan yang merusak jalannya permainan.</p>
+        </article>
+        <article class="card">
+          <div class="number">04</div>
+          <h3>TAAT ATURAN</h3>
+          <p>Patuhi peraturan server, struktur organisasi, dan keputusan staff yang berlaku.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cuty" class="section cuty-section">
+      <div class="section-title">
+        <span>02</span>
+        <div>
+          <p>INFORMASI</p>
+          <h2>CUTY</h2>
+        </div>
+      </div>
+
+      <div class="cuty-box">
+        <div class="cuty-icon">★</div>
+        <div>
+          <h3>PERMOHONAN CUTI</h3>
+          <p>
+            Gunakan halaman ini sebagai pusat informasi cuti anggota.
+            Isi nama, pangkat, alasan, dan durasi cuti sesuai ketentuan
+            yang ditetapkan oleh Militer Athera Roleplay.
+          </p>
+        </div>
+        <button class="btn primary" onclick="openCuty()">AJUKAN CUTI</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo.png" alt="Logo">
+    <div>
+      <strong>MILITER ATHERA ROLEPLAY</strong>
+      <p>© 2026 Athera Roleplay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="cutyModal">
+    <div class="modal-box">
+      <button class="close" onclick="closeCuty()">×</button>
+      <h2>AJUKAN CUTI</h2>
+      <form onsubmit="submitCuty(event)">
+        <input id="nama" type="text" placeholder="Nama / Username" required>
+        <input id="pangkat" type="text" placeholder="Pangkat" required>
+        <input id="durasi" type="text" placeholder="Durasi cuti" required>
+        <textarea id="alasan" placeholder="Alasan cuti" required></textarea>
+        <button class="btn primary" type="submit">KIRIM PENGAJUAN</button>
+      </form>
+      <p id="success" class="success"></p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("cutyModal");
+    const nav = document.getElementById("navMenu");
+
+    function openCuty() {
+      modal.classList.add("show");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeCuty() {
+      modal.classList.remove("show");
+      document.body.classList.remove("no-scroll");
+    }
+
+    function submitCuty(e) {
+      e.preventDefault();
+      document.getElementById("success").textContent =
+        "Pengajuan cuti berhasil disiapkan. Hubungkan form ini ke Discord/API untuk pengiriman otomatis.";
+    }
+
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      nav.classList.toggle("show");
+    });
+
+    document.querySelectorAll("nav a").forEach(a => {
+      a.addEventListener("click", () => nav.classList.remove("show"));
+    });
+
+    window.addEventListener("click", e => {
+      if (e.target === modal) closeCuty();
+    });
+  </script>
+</body>
+</html>
